@@ -1,5 +1,10 @@
 import { FC } from 'react';
+import styled from 'styled-components';
 
 export const App: FC = () => {
-  return <div>App</div>;
+  return <Wrap>App</Wrap>;
 };
+
+const Wrap = styled.div`
+  background-color: red;
+`;
