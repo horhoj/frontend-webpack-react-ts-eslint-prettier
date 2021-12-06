@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { TestComponent } from './TestComponent';
 
 export const App: FC = () => {
   return (
     <Wrap>
       <Title>cool29horhoj default webpack config </Title>
+      <TestComponent />
     </Wrap>
   );
 };

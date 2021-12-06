@@ -1,0 +1,6 @@
+.wrap1 {
+  background-color: red;
+  &:hover {
+    background-color: green;
+  }
+}

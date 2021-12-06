@@ -42,11 +42,41 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: [stylesHandler, 'css-loader'],
+        use: [
+          stylesHandler,
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: '[local]__[hash]'
+              }
+            },
+          },
+        ],
+        include: /\.module\.css$/i,
+      },
+      {
+        test: /\.css$/i,
+        use: [stylesHandler, "css-loader"],
+        exclude: /\.module\.css$/i,
       },
       {
         test: /\.s[ac]ss$/i,
         use: [stylesHandler, 'css-loader', 'sass-loader'],
+        exclude: /\.module\.s[ac]ss$/i,
+
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [stylesHandler, {
+          loader: "css-loader",
+          options: {
+            modules: {
+              localIdentName: '[local]__[hash]'
+            }
+          },
+        }, 'sass-loader'],
+        include: /\.module\.s[ac]ss$/i,
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
