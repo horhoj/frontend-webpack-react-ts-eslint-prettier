@@ -1,29 +1,14 @@
 import { FC } from 'react';
-import styled from 'styled-components';
 import { TestComponent } from './TestComponent';
+import x from './assets/img/1.jpg';
 
 export const App: FC = () => {
   return (
-    <Wrap>
-      <Title>cool29horhoj default webpack config </Title>
+    <div>
+      <div>cool29horhoj default webpack config </div>
       <TestComponent />
-    </Wrap>
+      111
+      <img src={x} alt="" />
+    </div>
   );
 };
-
-const Wrap = styled.div`
-  background-color: #fff;
-  margin: 0 auto;
-  max-width: 1024px;
-  min-width: 360px;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-`;
-
-const Title = styled.h1`
-  margin-top: 100px;
-  font-size: 30px;
-  font-weight: 400;
-  text-align: center;
-`;
