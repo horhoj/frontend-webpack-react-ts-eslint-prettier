@@ -33,12 +33,9 @@ module.exports = {
     'import/resolver': 'webpack',
   },
   rules: {
-    // possible JS errors
     'no-console': types.WARN,
     'no-template-curly-in-string': types.WARN,
-    // 'no-extra-parens': types.WARN,
     'require-atomic-updates': types.ERROR,
-    // best practices
     'array-callback-return': types.ERROR,
     'block-scoped-var': types.WARN,
     'class-methods-use-this': types.ERROR,
@@ -81,21 +78,6 @@ module.exports = {
     'import/newline-after-import': types.ERROR,
     'react/prop-types': types.OFF,
     'react/react-in-jsx-scope': types.OFF,
-    // 'class-methods-use-this': [
-    //   'error',
-    //   {
-    //     exceptMethods: [
-    //       'render',
-    //       'getInitialState',
-    //       'getDefaultProps',
-    //       'componentDidMount',
-    //       'componentWillReceiveProps',
-    //       'shouldComponentUpdate',
-    //       'componentDidUpdate',
-    //       'componentWillUnmount',
-    //     ],
-    //   },
-    // ],
     'func-call-spacing': [types.ERROR, 'never'],
     'prettier/prettier': [types.ERROR, { singleQuote: true }],
     '@typescript-eslint/ban-ts-comment': types.ERROR,
@@ -126,26 +108,8 @@ module.exports = {
         },
       },
     ],
-    // '@typescript-eslint/explicit-function-return-type': [
-    //   types.ERROR,
-    //   {
-    //     allowExpressions: false,
-    //     allowTypedFunctionExpressions: true,
-    //     allowHigherOrderFunctions: true,
-    //   },
-    // ],
     '@typescript-eslint/explicit-member-accessibility': [types.ERROR],
     '@typescript-eslint/func-call-spacing': [types.ERROR, 'never'],
-    // '@typescript-eslint/no-empty-interface': [
-    //   types.ERROR,
-    //   {
-    //     allowSingleExtends: true,
-    //   },
-    // ],
-    // '@typescript-eslint/no-extraneous-class': [
-    //   types.ERROR,
-    //   { allowConstructorOnly: true },
-    // ],
     '@typescript-eslint/no-for-in-array': types.ERROR,
     '@typescript-eslint/no-require-imports': types.ERROR,
     '@typescript-eslint/no-unnecessary-qualifier': types.ERROR,
@@ -157,13 +121,13 @@ module.exports = {
     '@typescript-eslint/no-extraneous-class': types.OFF,
     '@typescript-eslint/explicit-function-return-type': types.OFF,
     '@typescript-eslint/no-empty-function': types.OFF,
-    'react/button-has-type': [
-      types.ERROR,
-      {
-        button: true,
-        submit: true,
-        reset: true,
-      },
-    ],
+    // 'react/button-has-type': [
+    //   types.ERROR,
+    //   {
+    //     button: true,
+    //     submit: true,
+    //     reset: true,
+    //   },
+    // ],
   },
 };

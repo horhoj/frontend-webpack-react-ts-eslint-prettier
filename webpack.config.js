@@ -46,21 +46,34 @@ const config = {
       {
         test: /\.css$/i,
         use: [
-          stylesHandler,
+          "style-loader",
           {
             loader: "css-loader",
             options: {
               modules: {
-                localIdentName: '[local]__[hash]'
-              }
+                mode: "local",
+                localIdentName: "[name]__[local]--[hash:base64:5]",
+              },
             },
           },
         ],
+        // use: [
+        //   stylesHandler,
+        //   {
+        //     loader: "css-loader",
+        //     options: {
+        //       modules: {
+        //         localIdentName: '[local]__[hash]'
+        //       }
+        //     },
+        //   },
+        // ],
         include: /\.module\.css$/i,
       },
       {
         test: /\.css$/i,
         use: [stylesHandler, "css-loader"],
+        
         exclude: /\.module\.css$/i,
       },
       {
@@ -81,14 +94,18 @@ const config = {
         }, 'sass-loader'],
         include: /\.module\.s[ac]ss$/i,
       },
-      {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        // type: 'asset',
-        loader: 'url-loader',
-        options: {
-          name: "assets/img/[name]-[hash].[ext]",
-        },
+      // {
+      //   test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+      //   // type: 'asset',
+      //   loader: 'url-loader',
+      //   options: {
+      //     name: "assets/img/[name]-[hash].[ext]",
+      //   },
 
+      // },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
 
 
