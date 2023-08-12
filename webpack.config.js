@@ -17,7 +17,9 @@ const config = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'assets/media/[hash][ext][query]'
+    assetModuleFilename: 'assets/media/[name].[hash][ext][query]',
+    filename: 'js/[name].[hash].js', // Шаблон для названия файлов
+    clean: true, // Очистить ./dist перед сборкой
   },
   devServer: {
     open: true,
@@ -80,19 +82,19 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: [stylesHandler, "css-loader"],
-        
+        use: [{ loader: MiniCssExtractPlugin.loader, options: {} }, "css-loader"],
+
         exclude: /\.module\.css$/i,
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [stylesHandler, 'css-loader', 'sass-loader'],
+        use: [{ loader: MiniCssExtractPlugin.loader, options: {} }, 'css-loader', 'sass-loader'],
         exclude: /\.module\.s[ac]ss$/i,
 
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [stylesHandler, {
+        use: [{ loader: MiniCssExtractPlugin.loader, options: {} }, {
           loader: "css-loader",
           options: {
             modules: {
