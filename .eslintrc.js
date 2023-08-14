@@ -108,6 +108,7 @@ module.exports = {
         },
       },
     ],
+    '@typescript-eslint/no-unused-vars': [types.WARN],
     '@typescript-eslint/explicit-member-accessibility': [types.ERROR],
     '@typescript-eslint/func-call-spacing': [types.ERROR, 'never'],
     '@typescript-eslint/no-for-in-array': types.ERROR,

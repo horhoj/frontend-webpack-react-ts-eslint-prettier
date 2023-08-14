@@ -1,7 +1,5 @@
 /* eslint-disable */
 
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanPlugin = require("clean-webpack-plugin");
@@ -10,8 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isProduction = process.env.NODE_ENV == 'production';
 
 
-const stylesHandler = 'style-loader';
-
+// const stylesHandler = 'style-loader';
 
 const config = {
   entry: './src/index.tsx',
@@ -19,12 +16,21 @@ const config = {
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'assets/media/[name].[hash][ext][query]',
     filename: 'js/[name].[hash].js', // Шаблон для названия файлов
+    sourceMapFilename: '[name].[hash].js.map', // Шаблон для названия файлов
     clean: true, // Очистить ./dist перед сборкой
   },
+  devtool: !isProduction ? 'inline-source-map' : undefined,
   devServer: {
     open: true,
     host: 'localhost',
-    port: 3000
+    port: 3000,
+    historyApiFallback: true
+  },
+  resolve: {
+    alias: {
+      '~': path.resolve(__dirname, './src'),
+    },
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -37,12 +43,15 @@ const config = {
       filename: 'static/css/[name].[contenthash:8].css',
       chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
     }),
-
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
+
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -117,15 +126,9 @@ const config = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
-
-
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-  },
+
 };
 
 module.exports = () => {
