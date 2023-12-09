@@ -15,16 +15,18 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'assets/media/[name].[hash][ext][query]',
-    filename: 'js/[name].[hash].js', // Шаблон для названия файлов
-    sourceMapFilename: '[name].[hash].js.map', // Шаблон для названия файлов
-    clean: true, // Очистить ./dist перед сборкой
+    filename: 'js/[name].[hash].js',
+    sourceMapFilename: '[name].[hash].js.map',
+    clean: true,
   },
+
   devtool: !isProduction ? 'inline-source-map' : undefined,
   devServer: {
     open: true,
     host: 'localhost',
     port: 3000,
-    historyApiFallback: true
+    historyApiFallback: true,
+    hot: true
   },
   resolve: {
     alias: {
@@ -38,8 +40,6 @@ const config = {
     }),
     new CleanPlugin.CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
       filename: 'static/css/[name].[contenthash:8].css',
       chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
     }),
@@ -76,17 +76,6 @@ const config = {
             },
           },
         ],
-        // use: [
-        //   stylesHandler,
-        //   {
-        //     loader: "css-loader",
-        //     options: {
-        //       modules: {
-        //         localIdentName: '[local]__[hash]'
-        //       }
-        //     },
-        //   },
-        // ],
         include: /\.module\.css$/i,
       },
       {
@@ -113,15 +102,7 @@ const config = {
         }, 'sass-loader'],
         include: /\.module\.s[ac]ss$/i,
       },
-      // {
-      //   test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-      //   // type: 'asset',
-      //   loader: 'url-loader',
-      //   options: {
-      //     name: "assets/img/[name]-[hash].[ext]",
-      //   },
 
-      // },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
